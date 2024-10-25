@@ -7,10 +7,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens:{
+      sm: '356px',
+      md: '640px',
+      lg: '768px',
+      xl: '900px',
+    },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: '#FF7900',
+        secondary: '#72777A',
+        accent:{
+          default: '#000000',
+          des: '#5A5D5A',
+          hover: '#74767A'
+        }
       },
     },
   },
