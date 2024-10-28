@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
   _id: number;
-  name: string;
+  title: string;
   price: number;
   quantity: number;
 }
@@ -27,19 +27,20 @@ export const orebiSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
       const item = state.products.find((item) => item._id === action.payload._id);
+      console.log(JSON.stringify(item, null, 2));
       if (item) {
         item.quantity += action.payload.quantity;
       } else {
-        state.products.push(action.payload);
+        state.products.push({ ...action.payload, quantity: 1 });
       }
     },
-    increaseQuantity: (state, action: PayloadAction<{ _id: string }>) => {
+    increaseQuantity: (state, action: PayloadAction<{ _id: number }>) => {
       const item = state.products.find((item) => item._id === action.payload._id);
       if (item) {
         item.quantity++;
       }
     },
-    decreaseQuantity: (state, action: PayloadAction<{ _id: string }>) => {
+    decreaseQuantity: (state, action: PayloadAction<{ _id: number }>) => {
       const item = state.products.find((item) => item._id === action.payload._id);
       if (item && item.quantity > 1) {
         item.quantity--;

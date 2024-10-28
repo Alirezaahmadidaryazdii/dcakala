@@ -18,7 +18,7 @@ const VideoDoorPhone = () => {
       />
       <h2 className="m-5">آیفون تصویری قیمت، فروش و نصب</h2>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="md:col-span-1 sticky top-0 z-10">
+        <div className="md:col-span-1 block mx-auto md:sticky top-0 z-10">
           <ReusableFilter filter={data.Iphone.filter} />
         </div>
         <div className="md:col-span-4">

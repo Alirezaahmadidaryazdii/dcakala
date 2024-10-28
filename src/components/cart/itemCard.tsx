@@ -4,17 +4,18 @@ import { ImCross } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import {
   deleteItem,
-  drecreaseQuantity,
+  decreaseQuantity,
   increaseQuantity,
 } from "../../redux/orebiSlice";
+import Image from "next/image";
 
 interface Product {
   _id: string;
   title: string;
   price: number;
   quantity: number;
-  image: string;
-  disPrice: number;
+  img: string;
+  disPrice?: number;
 }
 
 const ItemCard = ({ item }: {item: Product}) => {
@@ -26,7 +27,7 @@ const ItemCard = ({ item }: {item: Product}) => {
           onClick={() => dispatch(deleteItem(item._id))}
           className="text-primeColor hover:text-red-500 duration-300 cursor-pointer"
         />
-        <img className="w-32 h-32" src={item.image} alt="productImage" />
+        <Image width={100} height={100} className="w-32 h-32" src={item.img} alt="productImage" />
         <h1 className="font-titleFont font-semibold">{item.title}</h1>
       </div>
       <div className="col-span-5 mdl:col-span-3 flex items-center justify-between py-4 mdl:py-0 px-4 mdl:px-0 gap-6 mdl:gap-0">
@@ -35,7 +36,7 @@ const ItemCard = ({ item }: {item: Product}) => {
         </div>
         <div className="w-1/3 flex items-center gap-6 text-lg">
           <span
-            onClick={() => dispatch(drecreaseQuantity({ _id: item._id }))}
+            onClick={() => dispatch(decreaseQuantity({ _id: item._id }))}
             className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
           >
             -

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Pagination } from '@mui/material';
 import ItemProductReusable from './itemProductReusable';
+import Link from 'next/link';
 
 // types.ts
 export interface Product {
@@ -42,9 +43,9 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       <h3 className="my-2">همه محصولات</h3>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {currentItems.map(item => (
-          <div key={item.id}>
+          <Link href={`/video-door-phone/${item.title}`} key={item.id}>
             <ItemProductReusable item={item} />
-          </div>
+          </Link>
         ))}
       </div>
       <Pagination
